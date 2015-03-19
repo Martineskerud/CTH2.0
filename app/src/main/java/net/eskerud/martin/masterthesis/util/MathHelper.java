@@ -4,6 +4,8 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.WindowManager;
 
+import net.eskerud.martin.masterthesis.bitmapblocks.BitmapBlock;
+
 /**
  * Created by Martin on 11-Mar-15.
  */
@@ -17,12 +19,19 @@ public class MathHelper {
     }
 
     //used for clamping the x value so things stay within the relationship editor.
-    public float evaluateX(float x) {
-        Point size = new Point();
-        display.getSize(size);
+    public float evaluateX(float x, BitmapBlock b) {
+        //Point size = new Point();
+        //display.getSize(size);
+        float threshhold;
+        if(b!= null){
 
-        int width = size.x;
-        float threshhold = width / 1.5f;
+             threshhold  = b.getWidth();
+        }
+        else{
+             threshhold = 200;
+        }
+
+        int width = 640;
         if (x > width - threshhold) {
             x = width - threshhold;
             return x;
@@ -33,11 +42,20 @@ public class MathHelper {
     }
 
     //used for clamping the y value so things stay within the relationship editor.
-    public float evaluateY(float y) {
-        Point size = new Point();
-        display.getSize(size);
-        int height = size.y;
-        float threshhold = height /2f;
+    public float evaluateY(float y, BitmapBlock b) {
+        //Point size = new Point();
+        //display.getSize(size);
+
+        float threshhold;
+        if(b!= null){
+
+            threshhold  = b.getHeight();
+        }
+        else{
+            threshhold = 200;
+        }
+
+        int height = 490;
         if (y > height - threshhold) {
             y = height - threshhold;
             return y;

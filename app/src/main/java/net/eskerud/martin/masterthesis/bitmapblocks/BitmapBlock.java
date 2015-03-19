@@ -20,20 +20,22 @@ public class BitmapBlock {
     private Matrix matrix;
     //source is the type of bitmap or node.
     private String src;
-    //id is a unique id for each bitmap
     private String id;
     private Bitmap bitmap;
-    private static int counter=0;
     private BitmapBlock connectedDevice1;
     private BitmapBlock connectedDevice2;
     private BitmapBlock  connectedDevice3;
     private BitmapBlock  connectedDevice4;
     private BitmapBlock  connectedDevice5;
     private BitmapBlock  connectedDevice6;
-    public BitmapBlock(Matrix matrix, String src, Resources res) {
+    private float height;
+    private float width;
+
+
+    public BitmapBlock(Matrix matrix, String src, Resources res, int num) {
         this.matrix = matrix;
         this.src = src;
-        this.id= src+counter;
+        this.id=src+num;
         active = false;
         int imageResource = res.getIdentifier(src, null, Consts.PACKAGE_NAME);
         this.bitmap = BitmapFactory.decodeResource(res, imageResource);
@@ -43,8 +45,30 @@ public class BitmapBlock {
         connectedDevice4=null;
         connectedDevice5=null;
         connectedDevice6=null;
-        counter++;
     }
+
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+
+    public String getId() {
+        return id;
+    }
+
 
 
     public BitmapBlock getConnectedDevice1() {
@@ -65,6 +89,40 @@ public class BitmapBlock {
     public void setConnectedDevice2(BitmapBlock connectedDevice2) {
         this.connectedDevice2 = connectedDevice2;
     }
+
+    public BitmapBlock getConnectedDevice3() {
+        return connectedDevice3;
+    }
+
+    public void setConnectedDevice3(BitmapBlock connectedDevice3) {
+        this.connectedDevice3 = connectedDevice3;
+    }
+
+    public BitmapBlock getConnectedDevice4() {
+        return connectedDevice4;
+    }
+
+    public void setConnectedDevice4(BitmapBlock connectedDevice4) {
+        this.connectedDevice4 = connectedDevice4;
+    }
+
+    public BitmapBlock getConnectedDevice5() {
+        return connectedDevice5;
+    }
+
+    public void setConnectedDevice5(BitmapBlock connectedDevice5) {
+        this.connectedDevice5 = connectedDevice5;
+    }
+
+    public BitmapBlock getConnectedDevice6() {
+        return connectedDevice6;
+    }
+
+    public void setConnectedDevice6(BitmapBlock connectedDevice6) {
+        this.connectedDevice6 = connectedDevice6;
+    }
+
+
 
     public boolean isActive() {
         return active;
@@ -129,4 +187,8 @@ public class BitmapBlock {
     public boolean getActive() {
         return active;
     }
+
+
+
 }
+
